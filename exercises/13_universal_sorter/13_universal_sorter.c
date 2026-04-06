@@ -38,10 +38,33 @@ void processFile(const char *filename) {
     if (n > 20) n = 20;  // 最多支持20个元素
 
     printf("=== 处理数据来自: %s ===\n", filename);
-
+    int *int_arr;
+    float* float_arr;
     switch (choice) {
-        // TODO: 在这里添加你的代码
-        // I AM NOT DONE
+        case 1:
+            int_arr = (int*)malloc(n * sizeof(int));
+            for(int i = 0; i < n; i++) {
+                fscanf(fin, "%d", &int_arr[i]);
+            }
+            sort(int_arr, n, 4, compareInt);
+            for(int i = 0; i < n; i++) {
+                printf("%d ", int_arr[i]);
+            }
+            printf("\n");
+            break;
+        case 2:
+            float_arr = (float*)malloc(n * sizeof(float));
+            for(int i = 0; i < n; i++) {
+                fscanf(fin, "%f", &float_arr[i]);
+            }
+            sort(float_arr, n, 4, compareFloat);
+            for(int i = 0; i < n; i++) {
+                printf("%f ", float_arr[i]);
+            }
+            printf("\n");
+            break;
+        default:
+            printf("invalid choice\n");
     }
 
     fclose(fin);
